@@ -8,4 +8,7 @@ Things you will need
 
 
 Getting started
-* 
+* Clone the project (command prompt *git clone https://github.com/msalinas1088/mario-for-kids.git*)
+* OR
+* Click on code
+* Open with Github Desktop
