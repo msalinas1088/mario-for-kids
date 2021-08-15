@@ -196,7 +196,7 @@ scene("game", (/*{ level, score }*/) => {
     const levelCfg = {
         width: 20,
         height: 20,
-        '=': [sprite('block'), solid()],
+        // '=': [sprite('block'), solid()],
         // '$': [sprite('coin'), 'coin'],
         // '%': [sprite('surprise'), solid(), 'coin-surprise'],
         // '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
