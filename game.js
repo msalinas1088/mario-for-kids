@@ -139,6 +139,29 @@ function getPlayer() {
     ];
 }
 
+function getPlayerBindings() {
+    // keyDown('left', () => {
+    //     //player.move(-, 0)
+    // });
+
+    // keyDown('right', () => {
+    //     player.move(, 0)
+    // });
+
+    // player.action(() => {
+    //     if (player.grounded()) {
+    //         // isJumping = false
+    //     }
+    // });
+
+    // keyPress('space', () => {
+    //     if (player.grounded()) {
+    //         isJumping = true
+    //         // player.jump(CURRENT_JUMP_FORCE)
+    //     }
+    // });
+}
+
 loadIcons();
 scene("game", (/*{ level, score }*/) => {
     layers(['bg', 'obj', 'ui'], 'obj')
@@ -194,9 +217,8 @@ scene("game", (/*{ level, score }*/) => {
     const gameLevel = addLevel(maps[0], levelCfg);
     //const gameLevel = addLevel(maps[level], levelCfg);
 
-
     // const player = add(getPlayer());
-
+    // getPlayerBindings();
 });
 
 start("game"/*, { level: 0, score: 0 }*/);
