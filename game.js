@@ -15,6 +15,8 @@ const SPRITE_WIDTH = 20;
 const SPRITE_HEIGHT = 20;
 let CURRENT_JUMP_FORCE = JUMP_FORCE;
 let isJumping = true;
+let moveLeftBindings = ['left', 'a'];
+let moveRightBindings = ['right', 'd'];
 let icons = [
     {
         'name': 'coin',
@@ -34,6 +36,125 @@ let icons = [
         // 'mapValue': '=',
         // 'config': () => { return [sprite('block'), 'coin'] }
     },
+    {
+        // loadSprite('surprise', 'gesQ1KP.png')
+        // '%': [sprite('surprise'), solid(), 'coin-surprise'],
+        'name': 'surprise',
+        'link': 'gesQ1KP.png',
+        'mapValue': '%',
+        'config': () => { return [sprite('surprise'), solid(), 'coin-surprise'] }
+    },
+    {
+        // loadSprite('surprise', 'gesQ1KP.png')
+        // '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
+        'name': 'surprise',
+        'link': 'gesQ1KP.png',
+        'mapValue': '*',
+        'config': () => { return [sprite('surprise'), solid(), 'mushroom-surprise'] }
+    },
+    // {
+    //     // loadSprite('evil-shroom', 'KPO3fR9.png')
+    //     // '^': [sprite('evil-shroom'), solid(), 'dangerous'],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('brick', 'pogC9x5.png')
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('mushroom', '0wMd92p.png')
+    //     // '#': [sprite('mushroom'), solid(), 'mushroom', body()],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('unboxed', 'bdrLpi6.png')
+    //     // '}': [sprite('unboxed'), solid()],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('pipe-top-left', 'ReTPiWY.png')
+    //     // '(': [sprite('pipe-bottom-left'), solid(), scale(0.5)],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('pipe-top-right', 'hj2GK4n.png')
+    //     // ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('pipe-bottom-left', 'c1cYSbt.png')
+    //     // '-': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('pipe-bottom-right', 'nqQ79eI.png')
+    //     // '+': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('blue-block', 'fVscIbn.png')
+    //     // '!': [sprite('blue-block'), solid(), scale(0.5)],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('blue-brick', '3e5YRQd.png')
+    //     // '£': [sprite('blue-brick'), solid(), scale(0.5)],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('blue-steel', 'gqVoI2b.png')
+    //     // 'x': [sprite('blue-steel'), solid(), scale(0.5)],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('blue-evil-shroom', 'SvV4ueD.png')
+    //     // 'z': [sprite('blue-evil-shroom'), solid(), scale(0.5), 'dangerous'],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
+    // {
+    //     // loadSprite('blue-surprise', 'RMqCc1G.png')
+    //     // '@': [sprite('blue-surprise'), solid(), scale(0.5), 'coin-surprise'],
+    //     'name': 'block',
+    //     'link': 'M6rwarW.png',
+    //     'mapValue': '=',
+    //     'config': () => { return [sprite('block'), 'coin'] }
+    // },
 ];
 
 
@@ -44,24 +165,6 @@ function loadIcons() {
         var icon = icons[i];
         loadSprite(icon.name, icon.link);
     }
-
-    // loadSprite('coin', 'wbKxhcd.png')
-    // loadSprite('block', 'M6rwarW.png')
-    // loadSprite('evil-shroom', 'KPO3fR9.png')
-    // loadSprite('brick', 'pogC9x5.png')
-    // loadSprite('mario', 'Wb1qfhK.png')
-    // loadSprite('mushroom', '0wMd92p.png')
-    // loadSprite('surprise', 'gesQ1KP.png')
-    // loadSprite('unboxed', 'bdrLpi6.png')
-    // loadSprite('pipe-top-left', 'ReTPiWY.png')
-    // loadSprite('pipe-top-right', 'hj2GK4n.png')
-    // loadSprite('pipe-bottom-left', 'c1cYSbt.png')
-    // loadSprite('pipe-bottom-right', 'nqQ79eI.png')
-    // loadSprite('blue-block', 'fVscIbn.png')
-    // loadSprite('blue-brick', '3e5YRQd.png')
-    // loadSprite('blue-steel', 'gqVoI2b.png')
-    // loadSprite('blue-evil-shroom', 'SvV4ueD.png')
-    // loadSprite('blue-surprise', 'RMqCc1G.png')
 }
 
 function getMaps() {
@@ -139,7 +242,7 @@ function getPlayer() {
     ];
 }
 
-function getPlayerBindings() {
+function getPlayerBindings(player) {
     // keyDown('left', () => {
     //     //player.move(-, 0)
     // });
@@ -196,10 +299,10 @@ scene("game", (/*{ level, score }*/) => {
     const levelCfg = {
         width: 20,
         height: 20,
-        // '=': [sprite('block'), solid()],
-        // '$': [sprite('coin'), 'coin'],
-        // '%': [sprite('surprise'), solid(), 'coin-surprise'],
-        // '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
+        '=': [sprite('block'), solid()],
+        '$': [sprite('coin'), 'coin'],
+        '%': [sprite('surprise'), solid(), 'coin-surprise'],
+        '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
         // '}': [sprite('unboxed'), solid()],
         // '(': [sprite('pipe-bottom-left'), solid(), scale(0.5)],
         // ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)],
@@ -217,8 +320,8 @@ scene("game", (/*{ level, score }*/) => {
     const gameLevel = addLevel(maps[0], levelCfg);
     //const gameLevel = addLevel(maps[level], levelCfg);
 
-    // const player = add(getPlayer());
-    // getPlayerBindings();
+    const player = add(getPlayer());
+    getPlayerBindings(player);
 });
 
 start("game"/*, { level: 0, score: 0 }*/);
