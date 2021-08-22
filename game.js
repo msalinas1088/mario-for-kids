@@ -269,6 +269,7 @@ loadIcons();
 scene("game", (/*{ level, score }*/) => {
     layers(['bg', 'obj', 'ui'], 'obj')
 
+    // const maps = getMaps();
     const maps = [
         [
             '                                      ',
