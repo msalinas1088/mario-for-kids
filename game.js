@@ -15,8 +15,8 @@ const SPRITE_WIDTH = 20;
 const SPRITE_HEIGHT = 20;
 let CURRENT_JUMP_FORCE = JUMP_FORCE;
 let isJumping = true;
-let moveLeftBindings = ['left', 'a'];
-let moveRightBindings = ['right', 'd'];
+
+const maps = getMaps();
 
 function getConfig() {
     var config = {
@@ -41,37 +41,10 @@ function getPlayer() {
     ];
 }
 
-function getPlayerBindings(player) {
-
-    // for ()
-
-    // keyDown('left', () => {
-    //     //player.move(-, 0)
-    // });
-
-    // keyDown('right', () => {
-    //     player.move(, 0)
-    // });
-
-    // player.action(() => {
-    //     if (player.grounded()) {
-    //         // isJumping = false
-    //     }
-    // });
-
-    // keyPress('space', () => {
-    //     if (player.grounded()) {
-    //         isJumping = true
-    //         // player.jump(CURRENT_JUMP_FORCE)
-    //     }
-    // });
-}
-
 loadIcons();
 scene("game", (/*{ level, score }*/) => {
     layers(['bg', 'obj', 'ui'], 'obj')
 
-    const maps = getMaps();
 
     const levelCfg = {
         width: 20,
